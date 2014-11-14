@@ -1,0 +1,72 @@
+%br
+%h1= t('sequence_request.sequence_requests')
+
+= link_to 'Descargar lista en hoja de cálculo XLS', admin_generate_and_download_xls_path, :title => 'Descargar archivo XLS', :class => "jq-button"
+= link_to 'Reportes por UR', admin_reports_by_ur_path, :class => "jq-button"
+= simple_form_for :serach, url: admin_search_by_folio_path do |f|
+  = f.input :folio, :input_html =>{:style => "width: 50px;"}
+  = f.submit 'Buscar', :class => 'jq-button'
+%br
+%br
+
+.span-19.last.tbl-header-top
+  .span-1
+    %label Est.
+  .span-3
+    %label Folio
+  .span-2
+    %label Fecha
+  .span-6
+    %label Solicitante
+  .span-7.last
+    &nbsp
+- @admin_sequence_requests.each_with_index do |sequence_request, i|
+  .span-19.last
+    .span-1
+      .status{:class => "status-#{sequence_request.status}", :title => SequenceRequest::STATUS[sequence_request.status]}
+    .span-11.tbl-det{:class => "alt-#{i%2}"}
+      .span-3
+        = sequence_request.folio
+      .span-2
+        = sequence_request.created_at.strftime("%d/%m/%Y")
+      .span-6.last
+        = sequence_request.petitioner
+    .span-1
+      -if sequence_request.status == SequenceRequest::STATUS.key('Cancelada')
+        &nbsp
+      -else
+        = link_to '', admin_sequence_request_path(sequence_request), :class => "icon-set-show jq-button", :title => "Mostrar solicitud"
+    .span-1
+      - if sequence_request.ur_id == 0
+        - case sequence_request.status
+        - when SequenceRequest::STATUS.key('Recibida')
+          .pagada{:title => "Marcar como pagada"}
+            = link_to ' ', admin_paid_unpaid_path(sequence_request), :confirm => '¿Marcar como pagada?', :method => :paid_unpaid, :class => 'icon-set-pagada jq-button'
+        - when SequenceRequest::STATUS.key('Pagada')
+          .no-pagada{:title => "Marcar como no pagada"}
+            = link_to ' ', admin_paid_unpaid_path(sequence_request), :confirm => '¿Marcar como no pagada?', :method => :paid_unpaid, :class => 'icon-set-no-pagada jq-button'
+        - else
+          &nbsp
+      - else
+        &nbsp
+    .span-1
+      -if sequence_request.status == SequenceRequest::STATUS.key('Cancelada')
+        &nbsp
+      -else
+        = link_to '', edit_admin_sequence_request_path(sequence_request), :class => "icon-set-edit jq-button", :title => "Editar solicitud"
+    .span-1
+      - if sequence_request.status == SequenceRequest::STATUS.key('Cancelada')
+        &nbsp
+      - else
+        = link_to '', admin_cancel_path(sequence_request), :confirm => '¿Cancelar esta solicitud?', :method => :cancel, :class => "icon-set-cancel jq-button", :title => 'Cancelar solicitud'
+    .span-1
+      = link_to '',  admin_download_file_path(:file_name => "public/pdf_files/#{sequence_request.folio}.pdf"), :title => "Descargar solicitud de secuencia PDF",  :class => 'icon-set-pdf-1 jq-button'
+    .span-1
+      = link_to_if sequence_request.status ==  SequenceRequest::STATUS.key('Concluida'), '',  admin_download_file_path(:file_name => "public/pdf_files/#{sequence_request.folio}_resultados.pdf"), :title => "Descargar resultados de solicitud de secuencia PDF",  :class => 'icon-set-pdf-2 jq-button'
+    .span-1.last
+      = link_to_if !sequence_request.results_file.nil?, '', admin_download_file_path(:file_name => "public/results_files/#{sequence_request.folio}_#{sequence_request.results_file}"), :title => "Descargar archivo de resultados #{sequence_request.results_file}",  :class => 'icon-set-file jq-button'
+
+.span-19.last
+  = will_paginate @admin_sequence_requests, :previous_label => 'Anterior', :next_label => 'Siguiente'
+
+

@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title Unidad de Proteogenómica
+    = stylesheet_link_tag('reset.css')
+    = stylesheet_link_tag('blueprint/ie.css')
+    = stylesheet_link_tag('blueprint/screen.css')
+    = stylesheet_link_tag('layout.css')
+    = stylesheet_link_tag('app.css')
+    = stylesheet_link_tag('scaffold.css')
+    = stylesheet_link_tag('jquery_ui/jquery-ui-1.8.16.custom.css')
+    = stylesheet_link_tag('tiptipv13/tipTip.css')
+
+    = javascript_include_tag('jquery-1.6.2.min.js')
+    = javascript_include_tag('rails.js')
+    = javascript_include_tag('app.js')
+    = javascript_include_tag('jquery-ui-1.8.16.custom.min.js')
+    = javascript_include_tag('tiptipv13/jquery.tipTip.minified.js')
+    = csrf_meta_tag
+  %body
+    .container
+      .span-24.last#header1
+      .span-24.last#header2
+      .span-24.last#content
+        .span-5
+          = render :partial => 'layouts/left_menu'
+        .span-19.last= yield
+      .span-24.last#footer
+        %br/
+        <p>diseño web Ramón Martínez Olvera | Instituto de Neurobiología UNAM<p>
+

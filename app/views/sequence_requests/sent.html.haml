@@ -1,0 +1,14 @@
+%h1
+  %Strong Solicitud de secuencias de ácidos nucleicos
+
+%br/
+%br/
+
+%h2
+  %Strong= params[:notice]
+
+%br/
+%br/
+
+= link_to 'Decargar el formulario de solicitud/pago', sequence_request_download_file_path(:file_name => params[:file_name]), :class => 'jq-button'
+= link_to 'Terminar', new_sequence_request_path, :class => 'jq-button'

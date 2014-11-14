@@ -1,0 +1,14 @@
+<% if @catalogs_resource.respond_to? :errors and @catalogs_resource.errors.any? -%>
+  $("#flash_notice").hide(300);
+  $("#error_explanation").html("<%= escape_javascript(render :partial => 'layouts/_error_messages', :locals => {:resource => @catalogs_resource, :message => 'Los datos del usuario no fueron guardados.' }) %>")
+  $("#error_explanation").show(300);
+<% else -%>
+  $("#error_explanation").hide(300);
+  $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+  $("#flash_notice").show(300);
+  $(":input:not(input[type=submit])").val("");
+  $(".new_edit").hide(600);
+  $(".list").show(600);
+  $(".list").html("<%= escape_javascript( render(:partial => "list") ) %>");
+  activate_jq_buttons();
+<% end -%>

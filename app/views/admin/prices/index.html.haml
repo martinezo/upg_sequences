@@ -1,0 +1,19 @@
+%br/
+%h1= t('prices.prices')
+
+.span-16.last.tbl-header-top
+  .span-10
+    %label=t('prices.description')
+  .span-2
+    %label=t('prices.price')
+  .span-1.last
+    &nbsp
+
+.span-16.last.tbl-det
+  - @admin_prices.each do |admin_price|
+    .span-10
+      = admin_price.description
+    .span-2{:style => "text-align: right;"}
+      =number_to_currency admin_price.price
+    .span-1.last.tbl-det-center
+      = link_to '', edit_admin_price_path(admin_price), :class => 'icon-set-edit jq-button', :title => "Modificar precio"

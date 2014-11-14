@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  company: MyString
+  petitioner: MyString
+  email: MyString
+  phone: MyString
+  group_leader: MyString
+  payment_method: 1
+
+two:
+  company: MyString
+  petitioner: MyString
+  email: MyString
+  phone: MyString
+  group_leader: MyString
+  payment_method: 1

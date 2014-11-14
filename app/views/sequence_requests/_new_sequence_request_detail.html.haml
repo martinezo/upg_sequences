@@ -1,0 +1,21 @@
+.sample
+  .span-12
+    =srd.text_field :sample_name, :style => "width: 465px;"
+  .span-3
+    =srd.select :adn_type_id, SequenceRequestDetail::ADN_TYPE_OPTIONS, {},:style => "width: 110px;"
+  .span-2
+    =srd.select :capilar, SequenceRequestDetail::CAPILAR_TYPE, {},:style => "width: 70px;"
+  .span-5
+    = select_tag "oligo_sel#{[idx]}", options_for_select(SequenceRequestDetail::OLIGO_OPTIONS, @sequence_request.sequence_request_details[idx].oligo_id), {:include_blank => '', :style => "width: 78px;", :class => 'oligo_sel'}
+    = srd.text_field :oligo_id, :style => "width: 104px;"
+  .span-1
+    //remove link if it is not the first
+    -if idx > 0
+      = link_to '-', nil , :remote => true, :id => "remove_sequence_request_detail",  :class=> "remove_sequence_request_detail jq-icon-minus"
+
+  .span-1.last
+    //add link if it is the last
+    -if lst==idx
+      = link_to '+', add_sequence_request_detail_path(:i => idx, :sequence_request => '3') , :remote => true, :id => "add_sequence_request_detail",  :class=> "add_sequence_request_detail jq-icon-plus"
+
+

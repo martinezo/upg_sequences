@@ -1,0 +1,25 @@
+= form_for(@admin_price) do |f|
+  - if @admin_price.errors.any?
+    #error_explanation
+      %h2
+        = "#{@admin_price.errors.count} #{t(:error)} El precio no ha sido modificado."
+      %ul
+        - @admin_price.errors.full_messages.each do |msg|
+          %li= msg
+
+  .span-19.tbl-header-top
+    .span-8
+      = f.label :description
+    .span-2.last
+      = f.label :price
+
+  .span-19.tbl-det
+    .span-8
+      = f.text_field :description, :style => "width: 308px; border: none;", :disabled => :true
+    .span-2
+      = f.text_field :price, :style => "width: 68px; text-align: right;"
+    .span-1
+      &nbsp
+    .span-8.last
+      = f.submit  t(".submit"), :class => 'jq-button'
+      = link_to t('crud.back'), admin_prices_path,  :class => 'jq-button'

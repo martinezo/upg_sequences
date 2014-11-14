@@ -1,0 +1,6 @@
+  $("#form").html("<%= escape_javascript(render(:partial => "form"))%>");
+  $(".new_edit").show(600);
+  $("#error_explanation").hide(0);
+  $("#flash_notice").hide(0);
+  $(".list").hide(600);
+  activate_jq_buttons();

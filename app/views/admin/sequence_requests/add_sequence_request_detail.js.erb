@@ -1,0 +1,15 @@
+/**
+ * Created by JetBrains RubyMine.
+ * User: martinezo
+ * Date: 8/18/11
+ * Time: 7:46 AM
+ * To change this template use File | Settings | File Templates.
+ */
+
+
+/* $("#add_new_detail").remove() */
+$(".tbl_det").append("<%= escape_javascript(render :partial => 'new_admin_sequence_request_detail_ajax', :locals => {:idx => params[:i].to_i+1}) %>")
+activate_jq_icons();
+
+
+

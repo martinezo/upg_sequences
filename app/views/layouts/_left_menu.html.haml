@@ -1,0 +1,16 @@
+%br/
+%br/
+-if params[:controller] == 'admin/sequence_requests'
+  = link_to image_tag('solicitudes_on.gif'),  admin_sequence_requests_path
+-else
+  = link_to image_tag('solicitudes_off.gif'),  admin_sequence_requests_path
+-if params[:controller] == 'admin/prices'
+  = link_to image_tag('precios_on.gif'),  admin_prices_path
+-else
+  = link_to image_tag('precios_off.gif'),  admin_prices_path
+-if params[:controller] == 'admin/users'
+  = link_to image_tag('usuarios_on.gif'),  admin_users_path
+-else
+  = link_to image_tag('usuarios_off.gif'),  admin_users_path
+
+= link_to image_tag('logout.jpg'),  admin_logout_path

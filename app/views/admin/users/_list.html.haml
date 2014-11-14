@@ -1,0 +1,41 @@
+%h1= t('users.users')
+
+= link_to 'Nuevo usuario', new_admin_user_path, :remote => true, :class => 'jq-button'
+
+%br/
+%br/
+
+.span-19.tbl-header-top.last
+  .span-7
+    %label=t('users.name')
+  .span-3
+    %label=t('users.login')
+  .span-6
+    %label=t('users.email')
+  .span-1
+    &nbsp
+  .span-1
+    &nbsp
+  .span-1.last
+    &nbsp
+- @catalogs_resource.each do |admin_user|
+  .span-19.tbl-det.last
+    .span-7
+      = admin_user.name
+    .span-3
+      = admin_user.login
+    .span-6
+      = admin_user.email
+    .span-1
+      .tbl-det-center
+        = link_to '',  admin_user, :remote => true, :class => "icon-set-show jq-button"
+    .span-1
+      .tbl-det-center
+        = link_to '', edit_admin_user_path(admin_user), :remote => true, :class => "icon-set-edit jq-button"
+    .span-1.last
+      .tbl-det-center
+        = link_to '', admin_user, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class=>'deletePost', :class => "icon-set-destroy jq-button"
+
+= will_paginate @catalogs_resource, :previous_label => 'Anterior', :next_label => 'Siguiente'
+:javascript
+  $('.pagination a').attr('data-remote', 'true');

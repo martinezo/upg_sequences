@@ -1,0 +1,97 @@
+sp:
+
+  users:
+    users: Usuarios
+    user: Usuario
+    name: Nombre
+    login: Usuario
+    email: E-mail
+
+  prices:
+    prices: Precios
+    description: Descripción
+    price: Precio
+
+  sequence_request:
+    sequence_request: Solicitud de secuencias de ácidos nucléicos
+    sequence_requests: Solicitudes de secuencias de ácidos nucléicos
+
+  activerecord:
+    models:
+      sequence_request: Solicitud de secuencia
+    attributes:
+      sequence_request:
+        company: 'Empresa o institución:'
+        petitioner: 'Solicitante:'
+        email: 'Correo electrónico:'
+        phone: 'Teléfono:'
+        group_leader: 'Jefe de grupo/Jefe inmediato:'
+        payment_method: 'Forma de pago:'
+        sample_name:  'Nombre de la Muestra:'
+        adn_type: 'Tipo ADN:'
+        oligo: 'Oligo:'
+      admin/price:
+        description: Descripción
+        price: precio
+      admin/user:
+        name: Nombre
+        email: Correo electr.
+        login: Usuario
+        password: Contraseña
+        password_confirmation: Cofirmación de contraseña
+
+    errors:
+      models:
+        admin:
+          user:
+            attributes:
+              password:
+                confirmation: La confirmación de la contraseña no corresponde.
+
+
+  sequence_requests:
+    form:
+      submit: Enviar solicitud
+
+  admin:
+    prices:
+      form:
+        submit: Guardar
+
+  errors:
+    messages:
+      blank: Es un dato requerido.
+      greater_than: "Debe ser mayor que %{count}"
+      too_short: "Debe tener al menos %{count} caracteres"
+      bad_email: Email incorrecto.
+
+  error: Error(es).
+
+  crud:
+    edit: Modificar
+    destroy: Eliminar
+    new: Agregar
+    show: Mostrar
+    back: Regresar
+    save: Guardar
+    cancel: Cancelar
+
+
+  authlogic:
+    error_messages:
+      email_invalid: Direccion de no válida.
+      login_invalid: Nombre de usuario no válido.
+      password_blank: Contraseña en blanco.
+      password_invalid: Contraseña inválida.
+      login_blank: Nombre de usuario en blanco.
+      no_authentication_details: Favor de escribir usuario y contraseña.
+
+  company: 'Empresa o institución:'
+  petitioner: 'Solicitante:'
+  email: 'Correo electrónico:'
+  phone: 'Teléfono:'
+  group_leader: 'Jefe de grupo/Jefe inmediato:'
+  payment_method: 'Forma de pago:'
+  sample_name:  'Nombre de la Muestra:'
+  adn_type: 'Tipo ADN:'
+  oligo: 'Oligo:'

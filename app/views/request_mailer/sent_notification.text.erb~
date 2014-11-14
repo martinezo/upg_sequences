@@ -1,0 +1,9 @@
+Curso PCR en tiempo real.
+
+<%= @name %>
+
+Tu registro para participar en este curso
+ha sido procesado con el número: #{@folio}.
+
+Para asegurar tu lugar es necesario realizar
+el pago correspondiente con el formulario de registro anexo.

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sample_name: MyString
+  adn_type_id: 1
+  oligo_id: 1
+  result: MyString
+  commentaries: MyString
+
+two:
+  sample_name: MyString
+  adn_type_id: 1
+  oligo_id: 1
+  result: MyString
+  commentaries: MyString

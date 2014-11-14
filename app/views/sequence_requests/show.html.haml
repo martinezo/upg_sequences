@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %b Company:
+  = @sequence_request.company
+%p
+  %b Petitioner:
+  = @sequence_request.petitioner
+%p
+  %b Email:
+  = @sequence_request.email
+%p
+  %b Phone:
+  = @sequence_request.phone
+%p
+  %b Group leader:
+  = @sequence_request.group_leader
+%p
+  %b Payment method:
+  = @sequence_request.payment_method
+= link_to 'Edit', edit_sequence_request_path(@sequence_request)
+|
+\#{link_to 'Back', sequence_requests_path}

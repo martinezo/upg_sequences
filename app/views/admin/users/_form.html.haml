@@ -1,0 +1,33 @@
+%h1= t('users.user')
+= form_for(@catalogs_resource, :remote => true ) do |f|
+
+  #error_explanation{:style => "display: none;"}
+
+  .span-16.tbl_header_left.last
+    .span-4
+      = f.label :name
+    .span-12.last
+      = f.text_field :name, :style => "width: 300px;"
+    .span-4
+      = f.label :email
+    .span-12.last
+      = f.text_field :email, :style => "width: 300px;"
+    .span-4
+      = f.label :login
+    .span-12.last
+      = f.text_field :login, :style => "width: 100px;"
+    .span-4
+      = f.label :password
+    .span-12.last
+      = f.password_field :password, :style => "width: 100px;"
+    .span-4
+      = f.label :password_confirmation
+    .span-12.last
+      = f.password_field :password_confirmation, :style => "width: 100px;"
+
+  #reset_div
+  %br/
+  %br/
+  .actions
+    = f.submit 'Guardar datos de usuario', :class => 'jq-button'
+    %p{:class => 'jq-button', :id => "cancel"} Cancelar

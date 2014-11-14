@@ -1,0 +1,26 @@
+- i=0
+- l = @admin_sequence_request.sequence_request_details.length-1
+= f.fields_for :sequence_request_details do |srd|
+  .sample
+    .span-3
+      =srd.text_field :sample_name, :style => "width: 108px;"
+    .span-2
+      =srd.select :capilar, SequenceRequestDetail::CAPILAR_TYPE, {},:style => "width: 70px;"
+    .span-2
+      =srd.select :adn_type_id, SequenceRequestDetail::ADN_TYPE_OPTIONS, {},:style => "width: 70px;"
+    .span-2
+      = srd.text_field :oligo_id, :style => "width: 68px;"
+    .span-4
+      = srd.text_field :result, :style => "width: 148px;"
+    .span-4
+      = srd.text_field :commentaries, :style => "width: 148px;"
+    .tbl-det-center
+      .span-1
+        //remove link if it is not the first
+        //= link_to_if i > 0, ' ', admin_remove_sequence_request_detail_path(srd) , :remote => true, :id => "remove_sequence_request_detail",  :class=> "remove_admin_sequence_request_detail ui-state-default ui-corner-all ui-icon ui-icon-minus"
+        - if i >0
+          = srd.check_box '_destroy', :title => "Seleccione aquí para borrar registro"
+      .span-1.last
+        - if l==i
+          = link_to '+', admin_add_sequence_request_detail_path(:i => i, :sequence_request => '3') , :remote => true, :id => "add_sequence_request_detail",  :class=> "add_sequence_request_detail jq-icon-plus"
+      - i = i + 1

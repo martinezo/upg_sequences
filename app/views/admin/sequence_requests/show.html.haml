@@ -1,0 +1,92 @@
+%br/
+
+%h1= "Solicitud de secuencias #{@admin_sequence_request.folio}"
+
+-#%p#notice= notice
+
+=show_for @admin_sequence_request do |f|
+  .span-19.last
+    .span-10
+      =f.attribute :company
+    .span-9.last
+      =f.attribute :petitioner
+      &nbsp
+    .span-10
+      =f.attribute :email
+      &nbsp
+    .span-9.last
+      =f.attribute :phone
+      &nbsp
+    .span-19.last
+      =f.attribute :group_leader
+      &nbsp
+    .span-10
+      =f.label :payment_method
+      %br/
+      %p= SequenceRequest::PMT_METHOD[@admin_sequence_request.payment_method]
+    .spam-9.last
+      =f.label :inb_member, :to_sentence => true
+      %br/
+      -if @admin_sequence_request.inb_member then
+        %p='Si'
+      -else
+        %p='No'
+    .span-10
+      =f.attribute :results_file, :if_blank => "Archivo no definido"
+    .span-9.last.wrapper
+      .label= f.label :ur
+      - if @admin_sequence_request.ur_id == 0
+        %p
+          No definida
+        %br/
+        %br/
+      -else
+        %p= @admin_sequence_request.ur.name_and_responsible
+        %br/
+        %br
+
+
+.span-19.tbl-header-top.last
+  .span-1
+    %label= 'No'
+  .span-3
+    %label= 'Nombre'
+  .span-2
+    %label= 'Capilar'
+  .span-2
+    %label= 'Tipo ADN'
+  .span-2
+    %label= 'Oligo'
+  .span-4
+    %label= 'Resultado'
+  .span-5.last
+    %label= 'Observaciones'
+
+.span-19.tbl-det.last
+  - i = 1
+  - @admin_sequence_request.sequence_request_details.each do |srd|
+    .span-19.last{:class => "alt-#{i%2}"}
+      .span-1
+        = i
+      .span-3
+        = srd.sample_name
+      .span-2
+        = srd.capilar
+      .span-2
+        = srd.adn_type_id
+      .span-2
+        = srd.oligo_id
+      .span-4
+        = srd.result
+      .span-5.last
+        = srd.commentaries
+      - i = i + 1
+
+.span-19.last
+  &nbsp
+
+= link_to 'Editar', edit_admin_sequence_request_path(@admin_sequence_request), :class => 'jq-button'
+
+= link_to 'Regresar', admin_sequence_requests_path, :class => 'jq-button'
+
+= link_to 'Enviar resultados', admin_send_results_path(@admin_sequence_request), :class => 'jq-button'

@@ -1,0 +1,17 @@
+%h1.cat_title Usuario
+
+%table{ :width => '95%', :border => '1', :cellspacing => '0'}
+  %tr.tbl_content
+    %td.tbl_header Nombre:
+    %td= @catalogs_resource.name
+  %tr.tbl_content
+    %td.tbl_header{:width => '110'} Usuario:
+    %td= @catalogs_resource.login
+  %tr.tbl_content
+    %td.tbl_header Email:
+    %td= @catalogs_resource.email
+
+%br
+  %p{:class => 'jq-button', :id => "back"} Regresar
+  = link_to 'Editar', edit_admin_user_path(@catalogs_resource.id || 0), :remote => true, :class => 'jq-button'
+%br &nbsp;

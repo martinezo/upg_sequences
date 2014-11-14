@@ -1,0 +1,81 @@
+$error_color: #cf0006;
+
+#header1 {
+  height: 150px;
+  background: url('../header1.jpg'); }
+
+#header2 {
+  height: 55px;
+  background: url('../header2.jpg'); }
+
+#content {
+  /* 19 columnas blueprint */
+  background-color: #ffffff;
+  padding-bottom: 20px;
+  min-height: 520px; }
+
+#footer {
+  height: 35px;
+  background: url('../foot.jpg');
+  text-align: center;
+  font-size: 10px;
+  color: #FFFFD6;; }
+
+.reset-div {
+  clear: both; }
+
+// ERROR MESSAGES
+
+.error {
+  display:none;
+  /*padding: 1px;*/
+}
+
+.field_with_errors {
+  label{
+    color: $error_color;
+  }
+  input{
+    border-color: $error_color;
+  }
+  select{
+      border-color: $error_color;
+    }
+  .date {
+    border-color: $error_color;
+  }
+  textarea{
+    border-color: $error_color;
+  }
+}
+
+#error_explanation {
+  width: 550px;
+  border: 2px solid $error_color;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 2px;
+    background-color: $error_color;
+    color: #fff; }
+  ul li {
+    margin-left: 12px;
+    margin-bottom: 6px;
+    font-family: Tahoma, sans-serif;
+    font-size: 12px;
+    list-style: square;
+    color: $error_color} }
+
+
+#notice {
+  font-family:  Tahoma, sans-serif;
+  color: green;
+  padding-bottom: 15px;
+  }

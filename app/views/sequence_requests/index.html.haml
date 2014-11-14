@@ -1,0 +1,25 @@
+%h1 Listing sequence_requests
+%table
+  %tr
+    %th Company
+    %th Petitioner
+    %th Email
+    %th Phone
+    %th Group leader
+    %th Payment method
+    %th
+    %th
+    %th
+  - @sequence_requests.each do |sequence_request|
+    %tr
+      %td= sequence_request.company
+      %td= sequence_request.petitioner
+      %td= sequence_request.email
+      %td= sequence_request.phone
+      %td= sequence_request.group_leader
+      %td= sequence_request.payment_method
+      %td= link_to 'Show', sequence_request
+      %td= link_to 'Edit', edit_sequence_request_path(sequence_request)
+      %td= link_to 'Destroy', sequence_request, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Sequence request', new_sequence_request_path

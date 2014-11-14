@@ -1,0 +1,81 @@
+= simple_form_for [:admin, @admin_sequence_request], :html => {:novalidate => true, :multipart => true} do |f|
+  - if @admin_sequence_request.errors.any?
+    #error_explanation
+      %h2
+        = "#{@admin_sequence_request.errors.count} #{t(:error)} Esta solicitud no ha sido enviada."
+      %ul
+        - @admin_sequence_request.errors.full_messages.each do |msg|
+          %li= msg
+
+  %br/
+
+  .span-19
+    .span-10
+      =f.input :company, :input_html =>{:style => "width: 350px;"}
+    .span-9.last
+      =f.input :petitioner, :input_html =>{:style => "width: 350px;"}
+    .span-10
+      =f.input :email, :input_html =>{:style => "width: 350px;"}
+    .span-9.last
+      =f.input :phone, :input_html =>{:style => "width: 350px;"}
+    .span-10
+      =f.input :group_leader, :input_html =>{:style => "width: 350px;"}
+    .span-9.last
+      .span-12.last
+        =f.label :payment_method
+      =f.collection_radio_buttons :payment_method, [[1, 'UR'] ,[2, 'Conacyt'], [3, 'PAPIIT'], [4, 'Efectivo'], [5, 'Depósito bancario']], :first, :last
+    .span-10
+      = f.input :inb_member
+    .span-9.last.ur{style: "display: #{@admin_sequence_request.inb_member ? 'inline' : 'none' };"}
+      = f.association :ur, label_method: :name_and_responsible, include_blank: false
+
+  %h2 Archivo de resultados
+  .span-19
+    .span-11
+      =f.input :upload_file, :as => :file, :input_html =>{:style => "width: 350px;"}
+    .span-3.last
+      =button_tag  'X', :class => 'jq-button clear_file', :value => '#sequence_request_upload_file'
+    .span-12
+      =f.input :results_file, :input_html =>{:style => "width: 350px;"}, :disabled => true
+    .span-7.last
+      =button_tag  'Eliminar erchivo de resultados', :class => 'jq-button remove_results_file', :value => '#remove_results_file'
+    .span-19.last &nbsp
+
+  =hidden_field_tag 'remove_results_file', false
+
+  %h2 Muestras
+
+
+  =hidden_field_tag 'drc', @drc || 1
+
+  .span-19
+    .tbl-header-top
+      .span-3
+        =f.label :sample_name
+      .span-2
+        =f.label :capilar_type
+      .span-2
+        =f.label :adn_type
+      .span-2
+        =f.label :oligo
+      .span-4
+        =f.label :result
+      .span-4
+        =f.label :commentaries
+    .span-1
+      .icon-set-destroy
+    .span-1.last
+      .icon-set-plus
+
+  .span-19.last.tbl_det
+    =render 'new_admin_sequence_request_detail', :f => f
+
+  .span-19.last
+    &nbsp
+  .span-19.last
+    &nbsp
+
+    .actions
+      = f.submit t('crud.save'), :class => 'jq-button'
+      = link_to t('crud.show'), admin_sequence_request_path(@admin_sequence_request), :class => 'jq-button'
+      = link_to t('crud.cancel'), admin_sequence_requests_path, :class => 'jq-button'

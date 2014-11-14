@@ -1,0 +1,59 @@
+= simple_form_for @sequence_request, :html => {:novalidate => true} do |f|
+  - if @sequence_request.errors.any?
+    #error_explanation
+      %h2
+        = "#{@sequence_request.errors.count} #{t(:error)} Esta solicitud no ha sido enviada."
+      %ul
+        - @sequence_request.errors.full_messages.each do |msg|
+          %li= msg
+
+  %br/
+
+  .span-24
+    .span-12
+      =f.input :company, :input_html =>{:style => "width: 450px;"}
+    .span-12.last
+      =f.input :petitioner, :input_html =>{:style => "width: 450px;"}
+    .span-12
+      =f.input :email, :input_html =>{:style => "width: 450px;"}
+    .span-12.last
+      =f.input :phone, :input_html =>{:style => "width: 450px;"}
+    .span-12
+      =f.input :group_leader, :input_html =>{:style => "width: 450px;"}
+    .span-12.last
+      .span-12.last
+        =f.label :payment_method
+      =f.collection_radio_buttons :payment_method, [[1, 'UR'] ,[2, 'Conacyt'], [3, 'PAPIIT'], [4, 'Efectivo'], [5, 'Depósito bancario']], :first, :last
+    .span-12
+      = f.input :inb_member
+    .span-12.last.ur{style: "display: #{@sequence_request.inb_member ? 'inline' : 'none' };"}
+      = f.association :ur, label_method: :name_and_responsible, include_blank: false
+
+  %br/
+
+  %h2 Muestras
+
+  =hidden_field_tag 'drc', @drc || 1
+
+  .span-24.tbl-header-top
+    .span-12
+      =f.label :sample_name
+    .span-3
+      =f.label :adn_type
+    .span-2
+      =f.label :capilar_type
+    .span-5
+      =f.label :oligo
+    .span-2.last
+      &nbsp
+
+  .span-24.tbl_det
+    - i=0
+    - l = @sequence_request.sequence_request_details.length-1
+    =f.fields_for :sequence_request_details do |srd|
+      =render :partial => 'new_sequence_request_detail', :locals => {:srd => srd, :idx => i, :lst => l}
+      - i +=1
+
+  .span-19.last &nbsp
+  .actions
+    = f.submit  t(".submit"), :class => 'jq-button'

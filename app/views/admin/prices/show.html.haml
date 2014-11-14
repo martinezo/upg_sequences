@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Description:
+  = @admin_price.description
+%p
+  %b Price:
+  = @admin_price.price
+%p
+  %b User:
+  = @admin_price.user_id
+= link_to 'Edit', edit_admin_price_path(@admin_price)
+|
+\#{link_to 'Back', admin_prices_path}

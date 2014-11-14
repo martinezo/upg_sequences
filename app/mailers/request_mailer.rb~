@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+
+class AppMailer < ActionMailer::Base
+  default :from => 'upg@inb.unam.mx'
+
+   def sent_notification(name, email, folio)
+      @name = name
+      @folio = folio
+      attachments["#{folio}.pdf"] = File.read("public/pdf_files/#{folio}.pdf")
+      mail(:to => email, :subject => "Curso PCR en tiempo real.")
+   end
+end

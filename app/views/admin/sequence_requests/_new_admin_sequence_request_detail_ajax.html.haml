@@ -1,0 +1,21 @@
+.sample
+  .span-3
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", 'sample_name', :style => "width: 108px;"
+  .span-2
+    = select "sequence_request[sequence_request_details_attributes][#{idx}]", :capilar_type, SequenceRequestDetail::CAPILAR_TYPE,{}, :style => "width: 68px;"
+  .span-2
+    = select "sequence_request[sequence_request_details_attributes][#{idx}]", :adn_type_id, SequenceRequestDetail::ADN_TYPE_OPTIONS,{}, :style => "width: 68px;"
+    //= select :oligo_sel, :oligo_sel, options_for_select(SequenceRequestDetail::OLIGO_OPTIONS), {}, {:include_blank => '', :style => "width: 78px;"}
+  .span-2
+    //= select_tag "oligo_sel#{[idx]}", options_for_select(SequenceRequestDetail::OLIGO_OPTIONS), {:include_blank => '', :style => "width: 78px;", :class => 'oligo_sel'}
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", :oligo_id, :style => "width: 68px;"
+  .span-4
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", 'result', :style => "width: 148px;"
+  .span-4
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", 'commentaries', :style => "width: 148px;"
+  .span-1
+    //remove link if it is not the first
+    = link_to '-', ' ', :remote => true, :id => "remove_sequence_request_detail",  :class=> "remove_sequence_request_detail jq-icon-minus"
+  .span-1.last
+    //add link if it is the last
+    = link_to '+', admin_add_sequence_request_detail_path(:i => idx, :sequence_request => 'sequence_request') , :remote => true, :id => "add_sequence_request_detail",  :class=> "add_sequence_request_detail jq-icon-plus"

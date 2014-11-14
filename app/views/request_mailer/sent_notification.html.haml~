@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+  %body
+    %h1
+      Solicitud de Secuencias de Acidos Nucléicos.
+    %br/
+    %h2
+      #{@name}
+    %br/
+    %p
+      Tu registro para participar en este curso
+      ha sido procesado con el número: #{@folio}.
+    %p
+      Para asegurar tu lugar es necesario realizar
+      el pago correspondiente con el formulario de registro anexo.
+    

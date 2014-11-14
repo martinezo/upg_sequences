@@ -1,0 +1,18 @@
+.sample
+  .span-12
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", 'sample_name', :style => "width: 465px;"
+  .span-3
+    = select "sequence_request[sequence_request_details_attributes][#{idx}]", :adn_type_id, SequenceRequestDetail::ADN_TYPE_OPTIONS,{}, :style => "width: 110px;"
+  .span-2
+    =select "sequence_request[sequence_request_details_attributes][#{idx}]", :capilar, SequenceRequestDetail::CAPILAR_TYPE, {},:style => "width: 70px;"
+  .span-5
+    //= select :oligo_sel, :oligo_sel, options_for_select(SequenceRequestDetail::OLIGO_OPTIONS), {}, {:include_blank => '', :style => "width: 78px;"}
+    = select_tag "oligo_sel#{[idx]}", options_for_select(SequenceRequestDetail::OLIGO_OPTIONS), {:include_blank => '', :style => "width: 78px;", :class => 'oligo_sel'}
+    = text_field "sequence_request[sequence_request_details_attributes][#{idx}]", :oligo_id, :style => "width: 104px;"
+  .span-1
+    //remove link if it is not the first
+    = link_to '-', ' ' , :remote => true, :id => "remove_sequence_request_detail",  :class=> "remove_sequence_request_detail jq-icon-minus"
+
+  .span-1.last
+    //add link if it is the last
+    = link_to '+', add_sequence_request_detail_path(:i => idx, :sequence_request => 'sequence_request') , :remote => true, :id => "add_sequence_request_detail",  :class=> "add_sequence_request_detail jq-icon-plus"

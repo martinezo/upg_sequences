@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails upg_sequences: development" uuid="808d73e1-7224-4321-8468-534d09ea536a">
+      <user-name>postgres</user-name>
+      <user-password>dfdadfc5dfd9dfdedf9edfc7dfcf</user-password>
+    </data-source>
+    <data-source name="Rails upg_sequences: test" uuid="81a4d0ca-70a3-4794-9807-6716e7a33924">
+      <user-name>upg_sequences</user-name>
+    </data-source>
+    <data-source name="Rails upg_sequences: production" uuid="499beeb3-9716-421f-a212-87fd8ec765ad">
+      <user-name>postgres</user-name>
+      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
+    </data-source>
+  </component>
+</project>

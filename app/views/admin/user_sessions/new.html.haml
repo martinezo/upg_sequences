@@ -1,0 +1,18 @@
+=simple_form_for @user_session, :html => {:novalidate => true} do |f|
+  %br/
+  - if @user_session.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@user_session.errors.count, "error")
+      %ul
+        - @user_session.errors.full_messages.each do |msg|
+          %li= msg
+  %br/
+
+  .span-10
+    &nbsp;
+  .span-5.last
+    =f.input :login, :input_html =>{:style => "width: 150px;"}
+    =f.input :password, :input_html =>{:style => "width: 150px;"}
+    %br/
+    %p= f.submit "Entrar", :class => 'jq-button'
